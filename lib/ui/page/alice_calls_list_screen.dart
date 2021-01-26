@@ -4,6 +4,7 @@ import 'package:alice_lightweight/ui/page/alice_call_details_screen.dart';
 import 'package:alice_lightweight/core/alice_core.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:alice_lightweight/ui/utils/alice_constants.dart';
+import 'package:alice_lightweight/ui/utils/alice_share_logs.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_list_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
   _AliceCallsListScreenState() {
     _menuItems.add(AliceMenuItem("Delete", Icons.delete));
     _menuItems.add(AliceMenuItem("Stats", Icons.insert_chart));
-    _menuItems.add(AliceMenuItem("Save", Icons.save));
+    _menuItems.add(AliceMenuItem("Share", Icons.share));
   }
 
   @override
@@ -119,6 +120,9 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     }
     if (menuItem.title == "Stats") {
       _showStatsScreen();
+    }
+    if (menuItem.title == "Share") {
+      _shareLogs();
     }
   }
 
@@ -225,5 +229,12 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
 
   void _updateSearchQuery(String query) {
     setState(() {});
+  }
+
+  Future<void> _shareLogs() async {
+    final logs = aliceCore.callsSubject.value;
+    final file = await saveLogs(logs);
+    shareFile(file);
+    return;
   }
 }
