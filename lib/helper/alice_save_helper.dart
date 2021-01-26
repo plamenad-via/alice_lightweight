@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:alice_lightweight/helper/alice_conversion_helper.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
-import 'package:alice_lightweight/ui/utils/alice_parser.dart';
+import 'package:alice_lightweight/utils/alice_parser.dart';
 
 class AliceSaveHelper {
   static JsonEncoder _encoder = new JsonEncoder.withIndent('  ');

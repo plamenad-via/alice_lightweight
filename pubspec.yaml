@@ -13,4 +13,5 @@ dependencies:
   http: ^0.12.2
   dio: ^3.0.9
   rxdart: ^0.24.1
-  share: ^0.6.4+3
+  share: ^0.6.5+4
+  path_provider: ^1.6.27
