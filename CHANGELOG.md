@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Fix problem with dependencies.
+
 ## 1.0.1
 
 * Showing full path of request inside list.
