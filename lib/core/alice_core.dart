@@ -13,7 +13,7 @@ class AliceCore {
 
   /// Rx subject which contains all intercepted http calls
   final BehaviorSubject<List<AliceHttpCall>> callsSubject =
-      BehaviorSubject.seeded(List());
+      BehaviorSubject.seeded([]);
 
   GlobalKey<NavigatorState> _navigatorKey;
   Brightness _brightness = Brightness.light;
@@ -116,7 +116,7 @@ class AliceCore {
 
   /// Remove all calls from calls subject
   void removeCalls() {
-    callsSubject.add(List());
+    callsSubject.add([]);
   }
 
   AliceHttpCall _selectCall(int requestId) => callsSubject.value
