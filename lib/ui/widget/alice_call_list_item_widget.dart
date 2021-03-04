@@ -129,7 +129,7 @@ class AliceCallListItemWidget extends StatelessWidget {
 
   Widget _buildResponseColumn(BuildContext context) {
     assert(context != null, "context can't be null");
-    List<Widget> widgets = List();
+    List<Widget> widgets = [];
     if (call.loading) {
       widgets.add(
         SizedBox(

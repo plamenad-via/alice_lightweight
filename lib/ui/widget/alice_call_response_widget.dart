@@ -30,7 +30,7 @@ class _AliceCallResponseWidgetState
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     if (!_call.loading) {
       rows.addAll(_buildGeneralDataRows());
       rows.addAll(_buildHeadersRows());
@@ -54,7 +54,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildGeneralDataRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     rows.add(getListRow("Received:", _call.response.time.toString()));
     rows.add(getListRow("Bytes received:", formatBytes(_call.response.size)));
 
@@ -69,7 +69,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildHeadersRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     var headers = _call.response.headers;
     var headersContent = "Headers are empty";
     if (headers != null && headers.length > 0) {
@@ -85,7 +85,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildBodyRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     if (_isImageResponse()) {
       rows.addAll(_buildImageBodyRows());
     } else if (_isTextResponse()) {
@@ -102,7 +102,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildImageBodyRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     rows.add(
       Column(
         children: [
@@ -140,7 +140,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildLargeBodyTextRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     if (_showLargeBody) {
       return _buildTextBodyRows();
     } else {
@@ -165,7 +165,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildTextBodyRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     var headers = _call.response.headers;
     var bodyContent = formatBody(_call.response.body, getContentType(headers));
     rows.add(getListRow("Body:", bodyContent));
@@ -173,7 +173,7 @@ class _AliceCallResponseWidgetState
   }
 
   List<Widget> _buildUnknownBodyRows() {
-    List<Widget> rows = List();
+    List<Widget> rows = [];
     var headers = _call.response.headers;
     var contentType = getContentType(headers) ?? "<unknown>";
 

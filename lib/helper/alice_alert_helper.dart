@@ -15,10 +15,10 @@ class AliceAlertHelper {
     assert(context != null, "context can't be null");
     assert(title != null, "title can't be null");
     assert(description != null, "description can't be null");
-    List<Widget> actions = List();
+    List<Widget> actions = [];
     if (firstButtonTitle != null) {
       actions.add(
-        FlatButton(
+        TextButton(
           child: Text(firstButtonTitle),
           onPressed: () {
             if (firstButtonAction != null) {
@@ -31,7 +31,7 @@ class AliceAlertHelper {
     }
     if (secondButtonTitle != null) {
       actions.add(
-        FlatButton(
+        TextButton(
           child: Text(secondButtonTitle),
           onPressed: () {
             if (secondButtonAction != null) {

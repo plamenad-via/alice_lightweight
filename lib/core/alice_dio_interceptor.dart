@@ -49,14 +49,14 @@ class AliceDioInterceptor extends InterceptorsWrapper {
         request.body += "Form data";
 
         if (data.fields?.isNotEmpty == true) {
-          List<AliceFormDataField> fields = List();
+          List<AliceFormDataField> fields = [];
           data.fields.forEach((entry) {
             fields.add(AliceFormDataField(entry.key, entry.value));
           });
           request.formDataFields = fields;
         }
         if (data.files?.isNotEmpty == true) {
-          List<AliceFormDataFile> files = List();
+          List<AliceFormDataFile> files = [];
           data.files.forEach((entry) {
             files.add(AliceFormDataFile(entry.value.filename,
                 entry.value.contentType.toString(), entry.value.length));
