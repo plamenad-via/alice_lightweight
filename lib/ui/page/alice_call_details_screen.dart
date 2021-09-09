@@ -7,15 +7,13 @@ import 'package:alice_lightweight/ui/widget/alice_call_overview_widget.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_request_widget.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_response_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 
 class AliceCallDetailsScreen extends StatefulWidget {
   final AliceHttpCall call;
   final AliceCore core;
 
-  AliceCallDetailsScreen(this.call, this.core)
-      : assert(call != null, "call can't be null"),
-        assert(core != null, "core can't be null");
+  AliceCallDetailsScreen(this.call, this.core);
 
   @override
   _AliceCallDetailsScreenState createState() => _AliceCallDetailsScreenState();
@@ -41,7 +39,7 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
         initialData: [widget.call],
         builder: (context, callsSnapshot) {
           if (callsSnapshot.hasData) {
-            AliceHttpCall call = callsSnapshot.data.firstWhere(
+            AliceHttpCall? call = callsSnapshot.data?.firstWhere(
                 (snapshotCall) => snapshotCall.id == widget.call.id,
                 orElse: null);
             if (call != null) {

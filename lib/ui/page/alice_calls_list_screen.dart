@@ -7,7 +7,6 @@ import 'package:alice_lightweight/utils/alice_constants.dart';
 import 'package:alice_lightweight/utils/alice_share_logs.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_list_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:rxdart/streams.dart';
 
 import 'alice_stats_screen.dart';
 
@@ -196,7 +195,7 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
 
   void _onListItemClicked(AliceHttpCall call) {
     Navigator.push(
-      widget._aliceCore.getContext(),
+      widget._aliceCore.getContext()!,
       MaterialPageRoute(
         builder: (context) => AliceCallDetailsScreen(call, widget._aliceCore),
       ),
@@ -221,7 +220,7 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
 
   void _showStatsScreen() {
     Navigator.push(
-      aliceCore.getContext(),
+      aliceCore.getContext()!,
       MaterialPageRoute(
         builder: (context) => AliceStatsScreen(widget._aliceCore),
       ),

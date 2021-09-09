@@ -3,14 +3,11 @@ import 'package:alice_lightweight/helper/alice_conversion_helper.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:rxdart/streams.dart';
-
 
 class AliceStatsScreen extends StatelessWidget {
   final AliceCore aliceCore;
 
-  const AliceStatsScreen(this.aliceCore)
-      : assert(aliceCore != null, "aliceCore can't be null");
+  const AliceStatsScreen(this.aliceCore);
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +57,6 @@ class AliceStatsScreen extends StatelessWidget {
   }
 
   Widget _getRow(String label, String value) {
-    assert(label != null, "label can't be null");
-    assert(value != null, "value can't be null");
     return Row(
       children: <Widget>[
         Text(
@@ -94,24 +89,24 @@ class AliceStatsScreen extends StatelessWidget {
   int _getSuccessRequests() => calls
       .where((call) =>
           call.response != null &&
-          call.response.status >= 200 &&
-          call.response.status < 300)
+          call.response!.status >= 200 &&
+          call.response!.status < 300)
       .toList()
       .length;
 
   int _getRedirectionRequests() => calls
       .where((call) =>
           call.response != null &&
-          call.response.status >= 300 &&
-          call.response.status < 400)
+          call.response!.status >= 300 &&
+          call.response!.status < 400)
       .toList()
       .length;
 
   int _getErrorRequests() => calls
       .where((call) =>
           call.response != null &&
-          call.response.status >= 400 &&
-          call.response.status < 600)
+          call.response!.status >= 400 &&
+          call.response!.status < 600)
       .toList()
       .length;
 
@@ -121,7 +116,7 @@ class AliceStatsScreen extends StatelessWidget {
   int _getBytesSent() {
     int bytes = 0;
     calls.forEach((AliceHttpCall call) {
-      bytes += call.request.size;
+      bytes += call.request?.size ?? 0;
     });
     return bytes;
   }
@@ -130,7 +125,7 @@ class AliceStatsScreen extends StatelessWidget {
     int bytes = 0;
     calls.forEach((AliceHttpCall call) {
       if (call.response != null) {
-        bytes += call.response.size;
+        bytes += call.response?.size ?? 0;
       }
     });
     return bytes;
