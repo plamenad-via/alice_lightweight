@@ -64,7 +64,7 @@ class AliceCore {
 
   /// Add alice http call to calls subject
   void addCall(AliceHttpCall call) {
-    callsSubject.add([...?callsSubject.value, call]);
+    callsSubject.add([...callsSubject.value, call]);
   }
 
   /// Add error to exisng alice http call
@@ -77,7 +77,7 @@ class AliceCore {
     }
 
     selectedCall.error = error;
-    callsSubject.add([...?callsSubject.value]);
+    callsSubject.add([...callsSubject.value]);
   }
 
   /// Add response to existing alice http call
@@ -101,14 +101,14 @@ class AliceCore {
           selectedCall.request!.time.millisecondsSinceEpoch;
     }
 
-    callsSubject.add([...?callsSubject.value]);
+    callsSubject.add([...callsSubject.value]);
   }
 
   /// Add alice http call to calls subject
   void addHttpCall(AliceHttpCall aliceHttpCall) {
     assert(aliceHttpCall.request != null, "Http call request can't be null");
     assert(aliceHttpCall.response != null, "Http call response can't be null");
-    callsSubject.add([...?callsSubject.value, aliceHttpCall]);
+    callsSubject.add([...callsSubject.value, aliceHttpCall]);
   }
 
   /// Remove all calls from calls subject
@@ -117,5 +117,5 @@ class AliceCore {
   }
 
   AliceHttpCall? _selectCall(int requestId) => callsSubject.value
-      ?.firstWhere((call) => call.id == requestId, orElse: null);
+      .firstWhere((call) => call.id == requestId, orElse: null);
 }

@@ -160,8 +160,8 @@ class _AliceCallResponseWidgetState
           "Too large to show (${response.body.toString().length} Bytes)"));
       rows.add(const SizedBox(height: 8));
       rows.add(
-        RaisedButton(
-          color: AliceConstants.lightRed,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: AliceConstants.lightRed),
           child: Text("Show body"),
           onPressed: () {
             setState(() {
@@ -200,8 +200,7 @@ class _AliceCallResponseWidgetState
     var contentType = getContentType(headers);
 
     if (_showUnsupportedBody) {
-      var bodyContent =
-          formatBody(response.body, getContentType(headers));
+      var bodyContent = formatBody(response.body, getContentType(headers));
       rows.add(getListRow("Body:", bodyContent));
     } else {
       rows.add(getListRow(
@@ -211,9 +210,9 @@ class _AliceCallResponseWidgetState
               "If you're feeling lucky you can try button below to try render body"
               " as text, but it may fail."));
       rows.add(
-        RaisedButton(
+        ElevatedButton(
           child: Text("Show unsupported body"),
-          color: AliceConstants.lightRed,
+          style: ElevatedButton.styleFrom(primary: AliceConstants.lightRed),
           onPressed: () {
             setState(() {
               _showUnsupportedBody = true;

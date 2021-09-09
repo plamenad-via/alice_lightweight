@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:alice_lightweight/helper/alice_save_helper.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 
 Future<File> get _localFile async {
   final directory = await getApplicationDocumentsDirectory();
