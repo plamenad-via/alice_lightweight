@@ -1,3 +1,7 @@
+## 3.0.2
+
+* Added queryParameters in curl
+
 ## 3.0.1
 
 * Updated dependencies
