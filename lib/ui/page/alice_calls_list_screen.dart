@@ -1,11 +1,11 @@
-import 'package:alice_lightweight/model/alice_menu_item.dart';
-import 'package:alice_lightweight/helper/alice_alert_helper.dart';
-import 'package:alice_lightweight/ui/page/alice_call_details_screen.dart';
 import 'package:alice_lightweight/core/alice_core.dart';
+import 'package:alice_lightweight/helper/alice_alert_helper.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
+import 'package:alice_lightweight/model/alice_menu_item.dart';
+import 'package:alice_lightweight/ui/page/alice_call_details_screen.dart';
+import 'package:alice_lightweight/ui/widget/alice_call_list_item_widget.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
 import 'package:alice_lightweight/utils/alice_share_logs.dart';
-import 'package:alice_lightweight/ui/widget/alice_call_list_item_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'alice_stats_screen.dart';
@@ -36,8 +36,10 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
-          brightness: widget._aliceCore.brightness,
-          accentColor: AliceConstants.lightRed),
+        brightness: widget._aliceCore.brightness,
+        colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: AliceConstants.lightRed),
+      ),
       child: Scaffold(
         appBar: AppBar(
           title: _searchEnabled ? _buildSearchField() : _buildTitleWidget(),
