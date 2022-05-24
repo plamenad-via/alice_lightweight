@@ -1,6 +1,11 @@
+## 3.1.0
+
+* Flutter 3.0 support
+
 ## 3.0.3
 
 * Fix null check
+
 ## 3.0.2
 
 * Added queryParameters in curl
