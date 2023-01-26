@@ -1,3 +1,6 @@
+## [3.3.0]
+- Incremented the Flutter SDK version to 3.7.0
+
 ## 3.2.0
 
 * Upgraded dependencies
