@@ -45,10 +45,10 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "7d328c4d898a61efc3cd93655a0955858e29a0aa647f0f9e02d59b3bb275e2e8"
+      sha256: "9fdbf71baeb250fc9da847f6cb2052196f62c19906a3657adfc18631a667d316"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "5.0.0"
   ffi:
     dependency: transitive
     description:
@@ -215,10 +215,10 @@ packages:
     dependency: "direct main"
     description:
       name: share_plus
-      sha256: e387077716f80609bb979cd199331033326033ecd1c8f200a90c5f57b1c9f55e
+      sha256: "8c6892037b1824e2d7e8f59d54b3105932899008642e6372e5079c6939b4b625"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.0"
+    version: "6.3.1"
   share_plus_platform_interface:
     dependency: transitive
     description:
@@ -329,5 +329,5 @@ packages:
     source: hosted
     version: "0.2.0+3"
 sdks:
-  dart: ">=2.18.0 <4.0.0"
+  dart: ">=2.18.0 <3.0.0"
   flutter: ">=3.0.0"
