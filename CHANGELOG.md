@@ -1,3 +1,6 @@
+## [3.4.1]
+- Upgraded dependencies
+
 ## [3.4.0]
 - Upgraded dependencies
 
