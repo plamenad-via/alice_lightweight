@@ -1,3 +1,6 @@
+## [3.5.0]
+- Bump dependencies
+
 ## [3.4.1]
 - Upgraded dependencies
 
