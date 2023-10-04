@@ -1,3 +1,6 @@
+## [3.5.1]
+- Removed `http` package due to conflicts with old packages
+
 ## [3.5.0]
 - Bump dependencies
 
