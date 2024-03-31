@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:alice_lightweight/model/alice_http_error.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
+import 'package:alice_lightweight/model/alice_http_error.dart';
 import 'package:alice_lightweight/model/alice_http_response.dart';
 import 'package:alice_lightweight/ui/page/alice_calls_list_screen.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -14,6 +15,7 @@ class AliceCore {
   /// Rx subject which contains all intercepted http calls
   final BehaviorSubject<List<AliceHttpCall>> callsSubject =
       BehaviorSubject.seeded([]);
+  final AliceCustomColors customColors;
 
   GlobalKey<NavigatorState> _navigatorKey;
   Brightness _brightness = Brightness.light;
@@ -21,7 +23,7 @@ class AliceCore {
   StreamSubscription? _callsSubscription;
 
   /// Creates alice core instance
-  AliceCore(this._navigatorKey, this.darkTheme) {
+  AliceCore(this._navigatorKey, this.darkTheme, this.customColors) {
     _brightness = darkTheme ? Brightness.dark : Brightness.light;
   }
 
@@ -53,7 +55,7 @@ class AliceCore {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AliceCallsListScreen(this),
+          builder: (context) => AliceCallsListScreen(this, customColors),
         ),
       ).then((onValue) => _isInspectorOpened = false);
     }

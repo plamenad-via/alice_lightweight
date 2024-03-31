@@ -2,13 +2,16 @@ import 'package:alice_lightweight/helper/alice_conversion_helper.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:alice_lightweight/model/alice_http_response.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class AliceCallListItemWidget extends StatelessWidget {
   final AliceHttpCall call;
   final Function itemClickAction;
+  final AliceCustomColors customColors;
 
-  const AliceCallListItemWidget(this.call, this.itemClickAction);
+  const AliceCallListItemWidget(
+      this.call, this.itemClickAction, this.customColors);
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +112,7 @@ class AliceCallListItemWidget extends StatelessWidget {
   }
 
   Widget _buildDivider() {
-    return Container(height: 1, color: AliceConstants.grey);
+    return Container(height: 1, color: AliceConstants.grey(customColors));
   }
 
   String _formatTime(DateTime? time) {
@@ -134,7 +137,7 @@ class AliceCallListItemWidget extends StatelessWidget {
         SizedBox(
           child: new CircularProgressIndicator(
             valueColor:
-                new AlwaysStoppedAnimation<Color>(AliceConstants.lightRed),
+                new AlwaysStoppedAnimation<Color>(AliceConstants.lightRed(customColors)),
           ),
           width: 20,
           height: 20,
@@ -167,15 +170,15 @@ class AliceCallListItemWidget extends StatelessWidget {
   Color _getStatusTextColor(BuildContext context) {
     int status = call.response?.status ?? -1;
     if (status == -1) {
-      return AliceConstants.red;
+      return AliceConstants.red(customColors);
     } else if (status < 200) {
       return Theme.of(context).textTheme.bodyLarge?.color ?? Colors.green;
     } else if (status >= 200 && status < 300) {
-      return AliceConstants.green;
+      return AliceConstants.green(customColors);
     } else if (status >= 300 && status < 400) {
-      return AliceConstants.orange;
+      return AliceConstants.orange(customColors);
     } else if (status >= 400 && status < 600) {
-      return AliceConstants.red;
+      return AliceConstants.red(customColors);
     } else {
       return Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
     }
@@ -183,7 +186,7 @@ class AliceCallListItemWidget extends StatelessWidget {
 
   Color _getEndpointTextColor(BuildContext context) {
     if (call.loading) {
-      return AliceConstants.grey;
+      return AliceConstants.grey(customColors);
     } else {
       return _getStatusTextColor(context);
     }
@@ -207,10 +210,10 @@ class AliceCallListItemWidget extends StatelessWidget {
     Color iconColor;
     if (secure) {
       iconData = Icons.lock_outline;
-      iconColor = AliceConstants.green;
+      iconColor = AliceConstants.green(customColors);
     } else {
       iconData = Icons.lock_open;
-      iconColor = AliceConstants.red;
+      iconColor = AliceConstants.red(customColors);
     }
     return Padding(
       padding: EdgeInsets.only(right: 3),
