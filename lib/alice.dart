@@ -30,7 +30,7 @@ class Alice {
   /// Alice()
   ///   customColors: AliceCustomColors(
   ///     red: Colors.red,
-  ///     green: Colorss.blue
+  ///     green: Colors.blue
   ///   )
   /// )
   /// ```
@@ -42,8 +42,10 @@ class Alice {
   }) {
     final aliceCore = AliceCore(navigatorKey, darkTheme, customColors);
     final httpClientAdapter = AliceHttpClientAdapter(aliceCore);
+    final httpAdapter = AliceHttpAdapter(aliceCore);
 
-    return Alice._(darkTheme, navigatorKey, aliceCore, httpClientAdapter);
+    return Alice._(
+        darkTheme, navigatorKey, aliceCore, httpClientAdapter, httpAdapter);
   }
 
   /// Set custom navigation key. This will help if there's route library.
