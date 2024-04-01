@@ -2,12 +2,14 @@ import 'package:alice_lightweight/core/alice_core.dart';
 import 'package:alice_lightweight/helper/alice_conversion_helper.dart';
 import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class AliceStatsScreen extends StatelessWidget {
   final AliceCore aliceCore;
+  final AliceCustomColors customColors;
 
-  const AliceStatsScreen(this.aliceCore);
+  const AliceStatsScreen(this.aliceCore, this.customColors);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class AliceStatsScreen extends StatelessWidget {
       data: ThemeData(
         brightness: aliceCore.brightness,
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: AliceConstants.lightRed),
+            .copyWith(secondary: AliceConstants.lightRed(customColors)),
       ),
       child: Scaffold(
         appBar: AppBar(

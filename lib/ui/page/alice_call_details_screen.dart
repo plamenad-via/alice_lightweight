@@ -6,14 +6,16 @@ import 'package:alice_lightweight/ui/widget/alice_call_overview_widget.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_request_widget.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_response_widget.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AliceCallDetailsScreen extends StatefulWidget {
   final AliceHttpCall call;
   final AliceCore core;
+  final AliceCustomColors customColors;
 
-  AliceCallDetailsScreen(this.call, this.core);
+  AliceCallDetailsScreen(this.call, this.core, this.customColors);
 
   @override
   _AliceCallDetailsScreenState createState() => _AliceCallDetailsScreenState();
@@ -34,7 +36,7 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
       data: ThemeData(
         brightness: widget.core.brightness,
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: AliceConstants.lightRed),
+            .copyWith(secondary: AliceConstants.lightRed(widget.customColors)),
       ),
       child: StreamBuilder<List<AliceHttpCall>>(
         stream: widget.core.callsSubject,
@@ -62,7 +64,7 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
       length: 4,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          backgroundColor: AliceConstants.lightRed,
+          backgroundColor: AliceConstants.lightRed(widget.customColors),
           key: Key('share_key'),
           onPressed: () async {
             Share.share(await _getSharableResponseString(),
@@ -72,7 +74,7 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
         ),
         appBar: AppBar(
           bottom: TabBar(
-            indicatorColor: AliceConstants.lightRed,
+            indicatorColor: AliceConstants.lightRed(widget.customColors),
             tabs: _getTabBars(),
           ),
           title: Text('Alice - HTTP Call Details'),
@@ -110,7 +112,7 @@ class _AliceCallDetailsScreenState extends State<AliceCallDetailsScreen>
     List<Widget> widgets = [];
     widgets.add(AliceCallOverviewWidget(widget.call));
     widgets.add(AliceCallRequestWidget(widget.call));
-    widgets.add(AliceCallResponseWidget(widget.call));
+    widgets.add(AliceCallResponseWidget(widget.call, widget.customColors));
     widgets.add(AliceCallErrorWidget(widget.call));
     return widgets;
   }

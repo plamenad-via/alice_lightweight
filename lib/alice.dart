@@ -1,11 +1,14 @@
 import 'dart:io';
-import 'package:alice_lightweight/model/alice_http_call.dart';
 
 import 'package:alice_lightweight/core/alice_core.dart';
 import 'package:alice_lightweight/core/alice_dio_interceptor.dart';
 import 'package:alice_lightweight/core/alice_http_client_adapter.dart';
+import 'package:alice_lightweight/model/alice_http_call.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+export 'package:alice_lightweight/utils/alice_custom_colors.dart';
 
 class Alice {
   /// Should inspector use dark theme
@@ -15,28 +18,29 @@ class Alice {
   AliceCore _aliceCore;
   AliceHttpClientAdapter _httpClientAdapter;
 
-  Alice._(
-    this.darkTheme,
-    this._navigatorKey,
-    this._aliceCore,
-    this._httpClientAdapter,
-  );
+  Alice._(this.darkTheme, this._navigatorKey, this._aliceCore,
+      this._httpClientAdapter);
 
   /// Creates alice instance.
+  /// Usage Example
+  /// ```dart
+  /// Alice()
+  ///   customColors: AliceCustomColors(
+  ///     red: Colors.red,
+  ///     green: Colorss.blue
+  ///   )
+  /// )
+  /// ```
   factory Alice({
     GlobalKey<NavigatorState> navigatorKey =
         const GlobalObjectKey<NavigatorState>('AliceNavigatorState'),
     bool darkTheme = false,
+    AliceCustomColors customColors = const AliceCustomColors(),
   }) {
-    final aliceCore = AliceCore(navigatorKey, darkTheme);
+    final aliceCore = AliceCore(navigatorKey, darkTheme, customColors);
     final httpClientAdapter = AliceHttpClientAdapter(aliceCore);
 
-    return Alice._(
-      darkTheme,
-      navigatorKey,
-      aliceCore,
-      httpClientAdapter,
-    );
+    return Alice._(darkTheme, navigatorKey, aliceCore, httpClientAdapter);
   }
 
   /// Set custom navigation key. This will help if there's route library.

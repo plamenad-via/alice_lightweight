@@ -5,6 +5,7 @@ import 'package:alice_lightweight/model/alice_menu_item.dart';
 import 'package:alice_lightweight/ui/page/alice_call_details_screen.dart';
 import 'package:alice_lightweight/ui/widget/alice_call_list_item_widget.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:alice_lightweight/utils/alice_share_logs.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,9 @@ import 'alice_stats_screen.dart';
 
 class AliceCallsListScreen extends StatefulWidget {
   final AliceCore _aliceCore;
+  final AliceCustomColors customColors;
 
-  AliceCallsListScreen(this._aliceCore);
+  AliceCallsListScreen(this._aliceCore, this.customColors);
 
   @override
   _AliceCallsListScreenState createState() => _AliceCallsListScreenState();
@@ -38,7 +40,7 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
       data: ThemeData(
         brightness: widget._aliceCore.brightness,
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: AliceConstants.lightRed),
+            .copyWith(secondary: AliceConstants.lightRed(widget.customColors)),
       ),
       child: Scaffold(
         appBar: AppBar(
@@ -85,7 +87,7 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
             child: Row(children: [
               Icon(
                 item.iconData,
-                color: AliceConstants.lightRed,
+                color: AliceConstants.lightRed(widget.customColors),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 10),
@@ -108,7 +110,8 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
       autofocus: true,
       decoration: InputDecoration(
         hintText: "Search http request...",
-        hintStyle: TextStyle(fontSize: 16.0, color: AliceConstants.grey),
+        hintStyle: TextStyle(
+            fontSize: 16.0, color: AliceConstants.grey(widget.customColors)),
         border: InputBorder.none,
       ),
       style: TextStyle(fontSize: 16.0),
@@ -156,7 +159,7 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Icon(
             Icons.error_outline,
-            color: AliceConstants.orange,
+            color: AliceConstants.orange(widget.customColors),
           ),
           const SizedBox(height: 6),
           Text(
@@ -190,7 +193,8 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     return ListView.builder(
       itemCount: calls.length,
       itemBuilder: (context, index) {
-        return AliceCallListItemWidget(calls[index], _onListItemClicked);
+        return AliceCallListItemWidget(
+            calls[index], _onListItemClicked, widget.customColors);
       },
     );
   }
@@ -199,7 +203,8 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     Navigator.push(
       widget._aliceCore.getContext()!,
       MaterialPageRoute(
-        builder: (context) => AliceCallDetailsScreen(call, widget._aliceCore),
+        builder: (context) => AliceCallDetailsScreen(
+            call, widget._aliceCore, widget.customColors),
       ),
     );
   }
@@ -224,7 +229,8 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     Navigator.push(
       aliceCore.getContext()!,
       MaterialPageRoute(
-        builder: (context) => AliceStatsScreen(widget._aliceCore),
+        builder: (context) =>
+            AliceStatsScreen(widget._aliceCore, widget.customColors),
       ),
     );
   }

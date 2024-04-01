@@ -1,12 +1,14 @@
 import 'package:alice_lightweight/model/alice_http_call.dart';
 import 'package:alice_lightweight/ui/widget/alice_base_call_details_widget.dart';
 import 'package:alice_lightweight/utils/alice_constants.dart';
+import 'package:alice_lightweight/utils/alice_custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class AliceCallResponseWidget extends StatefulWidget {
   final AliceHttpCall call;
+  final AliceCustomColors customColors;
 
-  AliceCallResponseWidget(this.call);
+  AliceCallResponseWidget(this.call, this.customColors);
 
   @override
   State<StatefulWidget> createState() {
@@ -162,7 +164,7 @@ class _AliceCallResponseWidgetState
       rows.add(
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: AliceConstants.lightRed),
+              backgroundColor: AliceConstants.lightRed(widget.customColors)),
           child: Text("Show body"),
           onPressed: () {
             setState(() {
@@ -214,7 +216,7 @@ class _AliceCallResponseWidgetState
         ElevatedButton(
           child: Text("Show unsupported body"),
           style: ElevatedButton.styleFrom(
-              backgroundColor: AliceConstants.lightRed),
+              backgroundColor: AliceConstants.lightRed(widget.customColors)),
           onPressed: () {
             setState(() {
               _showUnsupportedBody = true;
