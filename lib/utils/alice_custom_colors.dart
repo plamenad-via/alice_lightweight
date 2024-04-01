@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AliceCustomColors {
-
   final Color? red;
   final Color? lightRed;
   final Color? green;

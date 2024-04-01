@@ -22,6 +22,15 @@ class Alice {
       this._httpClientAdapter);
 
   /// Creates alice instance.
+  /// Usage Example
+  /// ```dart
+  /// Alice()
+  ///   customColors: AliceCustomColors(
+  ///     red: Colors.red,
+  ///     green: Colorss.blue
+  ///   )
+  /// )
+  /// ```
   factory Alice({
     GlobalKey<NavigatorState> navigatorKey =
         const GlobalObjectKey<NavigatorState>('AliceNavigatorState'),

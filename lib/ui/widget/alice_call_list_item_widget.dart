@@ -136,8 +136,8 @@ class AliceCallListItemWidget extends StatelessWidget {
       widgets.add(
         SizedBox(
           child: new CircularProgressIndicator(
-            valueColor:
-                new AlwaysStoppedAnimation<Color>(AliceConstants.lightRed(customColors)),
+            valueColor: new AlwaysStoppedAnimation<Color>(
+                AliceConstants.lightRed(customColors)),
           ),
           width: 20,
           height: 20,

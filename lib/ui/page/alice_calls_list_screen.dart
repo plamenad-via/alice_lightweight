@@ -193,7 +193,8 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     return ListView.builder(
       itemCount: calls.length,
       itemBuilder: (context, index) {
-        return AliceCallListItemWidget(calls[index], _onListItemClicked, widget.customColors);
+        return AliceCallListItemWidget(
+            calls[index], _onListItemClicked, widget.customColors);
       },
     );
   }
@@ -228,7 +229,8 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     Navigator.push(
       aliceCore.getContext()!,
       MaterialPageRoute(
-        builder: (context) => AliceStatsScreen(widget._aliceCore, widget.customColors),
+        builder: (context) =>
+            AliceStatsScreen(widget._aliceCore, widget.customColors),
       ),
     );
   }
