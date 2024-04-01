@@ -1,3 +1,8 @@
+## [3.6.0]
+- Returned `http` package support
+- Added `customColors` property for colors customization
+- Bumped dependencies
+
 ## [3.5.1]
 - Removed `http` package due to conflicts with old packages
 

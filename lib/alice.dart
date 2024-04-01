@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:alice_lightweight/core/alice_http_adapter.dart';
+import 'package:http/http.dart' as http;
 import 'package:alice_lightweight/core/alice_core.dart';
 import 'package:alice_lightweight/core/alice_dio_interceptor.dart';
 import 'package:alice_lightweight/core/alice_http_client_adapter.dart';
@@ -17,9 +19,10 @@ class Alice {
   GlobalKey<NavigatorState> _navigatorKey;
   AliceCore _aliceCore;
   AliceHttpClientAdapter _httpClientAdapter;
+  AliceHttpAdapter _httpAdapter;
 
   Alice._(this.darkTheme, this._navigatorKey, this._aliceCore,
-      this._httpClientAdapter);
+      this._httpClientAdapter, this._httpAdapter);
 
   /// Creates alice instance.
   /// Usage Example
@@ -27,7 +30,7 @@ class Alice {
   /// Alice()
   ///   customColors: AliceCustomColors(
   ///     red: Colors.red,
-  ///     green: Colorss.blue
+  ///     green: Colors.blue
   ///   )
   /// )
   /// ```
@@ -39,8 +42,10 @@ class Alice {
   }) {
     final aliceCore = AliceCore(navigatorKey, darkTheme, customColors);
     final httpClientAdapter = AliceHttpClientAdapter(aliceCore);
+    final httpAdapter = AliceHttpAdapter(aliceCore);
 
-    return Alice._(darkTheme, navigatorKey, aliceCore, httpClientAdapter);
+    return Alice._(
+        darkTheme, navigatorKey, aliceCore, httpClientAdapter, httpAdapter);
   }
 
   /// Set custom navigation key. This will help if there's route library.
@@ -68,6 +73,11 @@ class Alice {
       HttpClientResponse response, HttpClientRequest request,
       {dynamic body}) {
     _httpClientAdapter.onResponse(response, request, body: body);
+  }
+
+  /// Handle both request and response from http package
+  void onHttpResponse(http.Response response, {dynamic body}) {
+    _httpAdapter.onResponse(response, body: body);
   }
 
   /// Opens Http calls inspector. This will navigate user to the new fullscreen
