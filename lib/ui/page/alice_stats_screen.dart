@@ -13,11 +13,17 @@ class AliceStatsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+
     return Theme(
       data: ThemeData(
-        brightness: aliceCore.brightness,
-        colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: AliceConstants.lightRed(customColors)),
+        brightness: brightness,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: brightness == Brightness.dark
+              ? AliceConstants.green(customColors)
+              : AliceConstants.blue(customColors),
+          brightness: brightness,
+        ),
       ),
       child: Scaffold(
         appBar: AppBar(
