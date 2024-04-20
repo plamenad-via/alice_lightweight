@@ -1,3 +1,6 @@
+## [3.7.0]
+- Breaking change: - removed `darkTheme` property from the constructor. `Theme.of(context).brightness` is used instead
+
 ## [3.6.0]
 - Returned `http` package support
 - Added `customColors` property for colors customization

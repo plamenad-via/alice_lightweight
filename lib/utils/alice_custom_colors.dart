@@ -7,6 +7,7 @@ class AliceCustomColors {
   final Color? grey;
   final Color? orange;
   final Color? white;
+  final Color? blue;
 
   const AliceCustomColors({
     this.red,
@@ -15,5 +16,6 @@ class AliceCustomColors {
     this.grey,
     this.orange,
     this.white,
+    this.blue,
   });
 }

@@ -37,10 +37,14 @@ class Alice {
   factory Alice({
     GlobalKey<NavigatorState> navigatorKey =
         const GlobalObjectKey<NavigatorState>('AliceNavigatorState'),
+    @Deprecated(
+      'This value is not used anymore. '
+      'Theme.of(context).brightness is used instead',
+    )
     bool darkTheme = false,
     AliceCustomColors customColors = const AliceCustomColors(),
   }) {
-    final aliceCore = AliceCore(navigatorKey, darkTheme, customColors);
+    final aliceCore = AliceCore(navigatorKey, customColors);
     final httpClientAdapter = AliceHttpClientAdapter(aliceCore);
     final httpAdapter = AliceHttpAdapter(aliceCore);
 

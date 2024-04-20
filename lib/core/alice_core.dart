@@ -9,32 +9,23 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AliceCore {
-  /// Should inspector use dark theme
-  final bool darkTheme;
-
   /// Rx subject which contains all intercepted http calls
   final BehaviorSubject<List<AliceHttpCall>> callsSubject =
       BehaviorSubject.seeded([]);
   final AliceCustomColors customColors;
 
   GlobalKey<NavigatorState> _navigatorKey;
-  Brightness _brightness = Brightness.light;
   bool _isInspectorOpened = false;
   StreamSubscription? _callsSubscription;
 
   /// Creates alice core instance
-  AliceCore(this._navigatorKey, this.darkTheme, this.customColors) {
-    _brightness = darkTheme ? Brightness.dark : Brightness.light;
-  }
+  AliceCore(this._navigatorKey, this.customColors);
 
   /// Dispose subjects and subscriptions
   void dispose() {
     callsSubject.close();
     _callsSubscription?.cancel();
   }
-
-  /// Get currently used brightness
-  Brightness get brightness => _brightness;
 
   /// Set custom navigation key. This will help if there's route library.
   void setNavigatorKey(GlobalKey<NavigatorState> navigatorKey) {
