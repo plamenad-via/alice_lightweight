@@ -1,3 +1,6 @@
+## [3.8.0]
+- Bump dependencies
+
 ## [3.7.0]
 - Breaking change: - removed `darkTheme` property from the constructor. `Theme.of(context).brightness` is used instead
 
